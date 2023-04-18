@@ -1,0 +1,50 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Обучение
+{% endblock %}
+
+{% block page-desc %}
+Помечайте пройденные слова
+{% endblock %}
+
+{% block back-url %}
+/studying
+{% endblock %}
+
+{% block back-title %}
+Новый набор
+{% endblock %}
+
+{% block content %}
+{% if words %}
+<div style="margin-top:10px" class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    {% for word in words %}
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div style="background-color:#e9effd" class="card-header py-3">
+            <h4 style="color:#1a0f91" class="my-0 fw-normal">{{ word.name }}</h4>
+          </div>
+          <div class="card-body">
+              <button type="button" class="w-100 btn btn btn-outline-primary" name="translation-{{ word.word_id }}" onclick="showTranslation(this)" data-translate="1">Показать перевод</button>
+              <div id="translation-{{ word.word_id }}" style="display:none">
+                  <div style="margin-top: 5px">
+                      <h5><b>{{ word.translation }}</b></h5>
+                      <h4>Примеры:</h4>
+                      <p>{{ word.examples }}</p>
+                  </div>
+              </div>
+            <button style="margin-top: 5px"type="button" class="w-100 btn btn-lg btn-outline-success" id="{{ word.word_id }}" onclick="wordStudyingLearned(this)">Изучено</button>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% else %}
+    <h4 style="color:#1a0f91; text-align:center; padding:10px" align=center class="my-0 fw-normal">Вы изучили все слова в словаре</h4>
+    <button type="button" class="w-100 btn btn-outline-primary" onclick="window.location.href='/new-word';">Добавить слова</button>
+{% endif %}
+<!--<script type="text/javascript">-->
+
+<!--</script>-->
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base_page.html" %}
+{% load static %}
+
+{% block page-title %}
+Словь слов для изучения
+{% endblock %}
+
+{% block page-desc %}
+Сначала идут неизученные слова
+{% endblock %}
+
+{% block back-url %}
+/new-word
+{% endblock %}
+
+{% block back-title %}
+Добавить слово
+{% endblock %}
+
+{% block content %}
+{% if words %}
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Слово</th>
+        <th scope="col">Перевод</th>
+        <th scope="col">Примеры</th>
+        <th scope="col">Изучено</th>
+        <th scope="col">Дата добавления</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for word in words %}
+      <tr>
+        <td>{{ word.word_id }}</td>
+        <td>{{ word.name }}</td>
+        <td>{{ word.translation }}</td>
+        <td>{{ word.examples }}</td>
+        <td>{% if word.is_learned %}<span style="color:green">Да</span>{% else %}<span style="color:red">Нет</span>{% endif %}</td>
+        <td>{{ word.created }}</td>
+        <td>
+          {% if word.is_learned %}
+          <button name="{{ word.word_id }}" type="button" class="btn btn-danger" onclick="changedWordLearned(this, false)">Учить снова</button>
+          {% else %}
+          <button name="{{ word.word_id }}" type="button" class="btn btn-success" onclick="changedWordLearned(this, true)">Изучил</button>
+          {% endif %}
+        </td>
+        <td><a name="{{ word.word_id }}" onclick="deleteWord(this)"><img src="{% static 'del.png' %}" width="10" alt="Удалить"></a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<h4 style="color:#1a0f91; text-align:center; padding:10px" align=center class="my-0 fw-normal">Слов нет</h4>
+<button type="button" class="w-100 btn btn-outline-primary" onclick="window.location.href='/new-word';">Добавить слово</button>
+{% endif %}
+{% endblock %}

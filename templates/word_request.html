@@ -1,0 +1,19 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+    {% if success %} Слово добавлено {% else %} Ошибка добавления {% endif %}
+{% endblock %}
+
+{% if success %}
+    {% block page-desc %}
+        {{ comment }}
+    {% endblock %}
+{% endif %}
+
+{% block back-url %}
+    {% if success %} /list-words {% else %} /new-word {% endif %}
+{% endblock %}
+
+{% block back-title %}
+    {% if success %} К списку слов {% else %} Попробовать еще раз {% endif %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Платформа для изучения Английского языка
+{% endblock %}
+
+{% block page-desc %}
+Сущенко Александр
+{% endblock %}
+
+{% block back-url %}
+/stats
+{% endblock %}
+
+{% block back-title %}
+Статистика платформы
+{% endblock %}
+
+{% block content %}
+<div class="container marketing p-5 text-center">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#e9effd"></rect>
+        </svg>
+        <h2 class="fw-normal">Словарь</h2>
+        <p>Вы можете добавлять и удалять слова, помечать их изученными</p>
+        <p><a class="btn btn-lg btn-primary" href="/list-words">На страницу словаря »</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#e9effd"></rect>
+        </svg>
+        <h2 class="fw-normal">Уроки</h2>
+        <p>Можно создавать и удалять проводимые уроки</p>
+        <p><a class="btn btn-lg btn-primary" href="/list-lessons">На страницу уроков »</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#e9effd"></rect>
+        </svg>
+        <h2 class="fw-normal">Обучение</h2>
+        <p>Вы можете проходить обучение по карточкам</p>
+        <p><a class="btn btn-lg btn-primary" href="/studying">Начать учиться »</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+  </div>
+{% endblock %}

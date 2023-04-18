@@ -1,0 +1,79 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Статистика по платформе
+{% endblock %}
+
+{% block page-desc %}
+{% if duration %}
+    В период с {{ duration.start }} по {{ duration.end }}
+{% else %}
+    За весь период
+{% endif %}
+{% endblock %}
+
+{% block back-url %}
+/
+{% endblock %}
+
+{% block back-title %}
+На главную страницу
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div style="margin-top:2px" class="p-5 text-center">
+        <h1 class="mb-3">Статистика добавленных слов</h1>
+    </div>
+    <div class="row row text-center">
+        <div class="col-md-4">
+            <h2>{{ total }}</h2>
+            <p class="text-muted">всего</p>
+        </div>
+        <div class="col-md-4">
+            <h2>{{ learned }}</h2>
+            <p class="text-muted">изучено</p>
+        </div>
+        <div class="col-md-4">
+            <h2>{{ studying }}</h2>
+            <p class="text-muted">на изучении</p>
+        </div>
+    </div>
+    <div class="row p-5 text-center">
+        <a align="center" class="btn btn-primary" href="/list-words" role="button" target="_blank">Посмотреть список слов</a>
+    </div>
+    <div class="row row text-center py-10">
+        <div class="col">
+            <h1 class="mb-3">Всего уроков - {{ lessons }}</h1>
+        </div>
+    </div>
+    <div class="row p-5 text-center">
+        <a align="center" class="btn btn-primary" href="/list-lessons" role="button" target="_blank">Посмотреть список уроков</a>
+    </div>
+    <form style="background-color:#e9effd;" method="post" class="px-5 py-2">
+        <div class="row mb-4 text-center">
+            <h3 style="color:#1a0f91">Фильтр по датам</h3>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label for="date_start">Создано с </label>
+                <input type="date" class="form-control input-lg" name="date_start" id="date_start" required>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label for="date_end">Создано до </label>
+                <input type="date" class="form-control input-lg" name="date_end" id="date_end" required>
+              </div>
+            </div>
+        </div>
+        <div class="row mb-4 text-center">
+            <h4>Указаные даты отфильтруют слова <b>по дате добавления</b>, а уроки <b>по дате проведения</b></h4>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary" formaction="/duration">Показать</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

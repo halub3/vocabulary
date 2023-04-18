@@ -1,0 +1,19 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+    {% if success %} Урок добавлен {% else %} Ошибка добавления {% endif %}
+{% endblock %}
+
+{% if success %}
+    {% block page-desc %}
+        {{ comment }}
+    {% endblock %}
+{% endif %}
+
+{% block back-url %}
+    {% if success %} /list-lessons {% else %} /new-lesson {% endif %}
+{% endblock %}
+
+{% block back-title %}
+    {% if success %} К списку уроков {% else %} Попробовать еще раз {% endif %}
+{% endblock %}

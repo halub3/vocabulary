@@ -1,0 +1,63 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Создание урока
+{% endblock %}
+
+{% block page-desc %}
+Здесь вы можете добавить урок
+{% endblock %}
+
+{% block back-url %}
+/
+{% endblock %}
+
+{% block back-title %}
+К списку уроков
+{% endblock %}
+
+
+{% block content %}
+<div class="container-sm px-5 py-5" id="term-form">
+    <form method="post">
+        <div class="row px-5 py-2">
+            <h3>Новый урок</h3>
+        </div>
+        <div class="row px-5 py-2">
+            <div class="row mb-4">
+                <div class="col">
+                  <div class="form-outline">
+                    <label for="new_name">Название урока</label>
+                    <input type="text" class="form-control input-lg" name="new_name" id="new_name" required>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-outline">
+                    <label for="new_date">Дата урока</label>
+                    <input type="date" class="form-control input-lg" name="new_date" id="new_date" required>
+                  </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="new_description">Описание урока</label>
+                    <textarea type="text" class="form-control input-lg" name="new_description" id="new_description" aria-describedby="definition_note" rows="3" required></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="new_level">Сложность</label>
+                    <select class="form-select" name="new_level" id="new_level" required>
+                        <option value="">Выберите сложность</option>
+                        <option value="easy">Легкая</option>
+                        <option value="medium">Средняя</option>
+                        <option value="hard">Сложная</option>
+                    </select>
+                    <div id="definition_note" class="form-text">Укажите уровень проведенного занятия</div>
+                </div>
+            </div>
+        </div>
+        <div class="row px-5 py-2">
+            <button type="submit" class="btn btn-primary" formaction="/send-lesson">Отправить</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

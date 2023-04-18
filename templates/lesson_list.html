@@ -1,0 +1,54 @@
+{% extends "base_page.html" %}
+{% load static %}
+
+{% block page-title %}
+Список уроков
+{% endblock %}
+
+{% block page-desc %}
+Упорядоченные уроки
+{% endblock %}
+
+{% block back-url %}
+/new-lesson
+{% endblock %}
+
+{% block back-title %}
+Добавить урок
+{% endblock %}
+
+{% block content %}
+{% if lessons %}
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Дата проведения</th>
+        <th scope="col">Урок</th>
+        <th scope="col">Сложность</th>
+        <th scope="col">Описание</th>
+        <th scope="col">Дата добавления</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for lesson in lessons %}
+      <tr>
+        <td>{{ lesson.lesson_id }}</td>
+        <td>{{ lesson.date }}</td>
+        <td>{{ lesson.name }}</td>
+        <td>{{ lesson.level }}</td>
+        <td>{{ lesson.description}}</td>
+        <td>{{ lesson.created }}</td>
+        <td><a name="{{ lesson.lesson_id }}" onclick="deleteLesson(this)"><img src="{% static 'del.png' %}" width="10" alt="Удалить"></a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<h4 style="color:#1a0f91; text-align:center; padding:10px" align=center class="my-0 fw-normal">Уроков нет</h4>
+<button type="button" class="w-100 btn btn-outline-primary" onclick="window.location.href='/new-lesson';">Добавить урок</button>
+{% endif %}
+{% endblock %}
