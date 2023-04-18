@@ -133,3 +133,9 @@ dmypy.json
 
 # Django secret key
 proj_maths/conf.py
+/.idea/.gitignore
+/.idea/django_dict.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
