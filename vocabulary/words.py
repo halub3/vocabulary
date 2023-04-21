@@ -1,3 +1,6 @@
+"""
+Процедуры обращения к БД таблицы слов
+"""
 from vocabulary.models import Words
 
 
@@ -49,4 +52,13 @@ def db_get_num_words_with_period(start=None, end=None, period=False, learn_bitma
                 return len(Words.objects.filter(is_learned=True))
             case 2:
                 return len(Words.objects.filter(is_learned=False))
+
+
+def db_find_word_by_name(name, russ=True):
+    if russ:
+        print(Words.objects.filter(name=name))
+        return Words.objects.filter(name=name)
+    else:
+        print(Words.objects.filter(translation=name))
+        return Words.objects.filter(translation=name)
 

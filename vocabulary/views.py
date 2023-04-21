@@ -36,6 +36,12 @@ def send_word(request):
         elif len(examples) == 0:
             context["success"] = False
             context["comment"] = "Примеры должны быть не пустыми"
+        elif len(words.db_find_word_by_name(name, russ=True)) > 0:
+            context["success"] = False
+            context["comment"] = "Слово '" + name + "' уже добавлено"
+        elif len(words.db_find_word_by_name(translation, russ=False)) > 0:
+            context["success"] = False
+            context["comment"] = "Слово '" + translation + "' уже добавлено"
         else:
             context["success"] = True
             context["comment"] = "Скорее выучите его"

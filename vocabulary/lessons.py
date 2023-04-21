@@ -1,3 +1,6 @@
+"""
+Процедуры обращения к БД таблицы уроков
+"""
 from vocabulary.models import Lessons
 
 
