@@ -22,26 +22,35 @@
     {% for word in words %}
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
-          <div style="background-color:#e9effd" class="card-header py-3">
-            <h4 style="color:#1a0f91" class="my-0 fw-normal">{{ word.name }}</h4>
+          <div class="card-header py-3 bcgrd-light-blue">
+            <h4 class="my-0 fw-normal clr-blue">{{ word.translation }}</h4>
           </div>
           <div class="card-body">
-              <button type="button" class="w-100 btn btn btn-outline-primary" name="translation-{{ word.word_id }}" onclick="showTranslation(this)" data-translate="1">Показать перевод</button>
+              <form name="{{ word.word_id }}" action="" method="dialog">
+                  <div class="col">
+                      <div class="form-outline">
+                          <label for="check-{{ word.word_id }}">Перевод</label>
+                          <input type="text" class="form-control input-lg" name="translation" id="check-{{ word.word_id }}" required>
+                      </div>
+                  </div>
+                  <button type="submit" class="w-100 btn btn-primary" onclick="checkAnswer(this.form);">Проверить</button>
+              </form>
+              <button style="margin-top: 15px" type="button" class="w-100 btn btn btn-outline-primary" name="translation-{{ word.word_id }}" onclick="showTranslation(this)" data-translate="1">Показать перевод</button>
               <div id="translation-{{ word.word_id }}" style="display:none">
                   <div style="margin-top: 5px">
-                      <h5><b>{{ word.translation }}</b></h5>
-                      <h4>Примеры:</h4>
+                      <h5 style="color:green" id="answer-{{ word.word_id }}"><b>{{ word.name }}</b></h5>
+                      <h6>Примеры:</h6>
                       <p>{{ word.examples }}</p>
                   </div>
               </div>
-            <button style="margin-top: 5px"type="button" class="w-100 btn btn-lg btn-outline-success" id="{{ word.word_id }}" onclick="wordStudyingLearned(this)">Изучено</button>
+            <button style="margin-top: 5px" type="button" class="w-100 btn btn-lg btn-outline-success" id="{{ word.word_id }}" onclick="wordStudyingLearned(this);">Изучено</button>
           </div>
         </div>
       </div>
     {% endfor %}
 </div>
 {% else %}
-    <h4 style="color:#1a0f91; text-align:center; padding:10px" align=center class="my-0 fw-normal">Вы изучили все слова в словаре</h4>
+    <h4 align=center class="my-0 fw-normal empty-list">Вы изучили все слова в словаре</h4>
     <button type="button" class="w-100 btn btn-outline-primary" onclick="window.location.href='/new-word';">Добавить слова</button>
 {% endif %}
 <!--<script type="text/javascript">-->

@@ -82,3 +82,14 @@ async function changedWordLearned(obj, make_learned) {
         alert("Произошла ошибка удаления");
     }
 }
+
+function checkAnswer(form) {
+    let answer = form.translation.value;
+    let correct = document.getElementById("answer-" + form.name).textContent.toLowerCase();
+    if (answer.toLowerCase() == correct) {
+        alert("Верно - " + answer);
+    } else {
+        alert("Ошибка, " + answer + " неверно, попробуйте еще!");
+    }
+    form.reset();
+}
