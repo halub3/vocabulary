@@ -5,15 +5,27 @@
 {% endblock %}
 
 {% block page-desc %}
-Сущенко Александр
+{% if user.is_authenticated %}
+Добро пожаловать, {{ user.username }}
+{% else %}
+Без авторизации вы не сможете проходить обучение
+{% endif %}
 {% endblock %}
 
 {% block back-url %}
-/stats
+    {% if user.is_authenticated %}
+    /stats
+    {% else %}
+    /login
+    {% endif %}
 {% endblock %}
 
 {% block back-title %}
-Статистика платформы
+    {% if user.is_authenticated %}
+    Статистика платформы
+    {% else %}
+    Авторизоваться
+    {% endif %}
 {% endblock %}
 
 {% block content %}
