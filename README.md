@@ -7,3 +7,4 @@
 2. Перейти в папку репозитория при помощи `cd`
 3. `pip3 install -r requirements.txt`
 4. `python3 manage.py runserver`
+5. создать .env в корне и прописать в нем значения SECRET_KEY и DEBUG
