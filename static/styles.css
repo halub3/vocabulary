@@ -1,0 +1,21 @@
+.clr-blue {
+    color: #1a0f91;
+}
+
+.bcgrd-light-blue {
+    background-color:#e9effd;
+}
+
+.base-block {
+    background-color:#e9effd;
+    margin-top:2px;
+}
+
+.empty-list {
+    color:#1a0f91;
+    text-align:center;
+    padding:10px
+}
+
+.mgt-2 {
+}

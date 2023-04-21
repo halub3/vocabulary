@@ -5,11 +5,15 @@
 {% endblock %}
 
 {% block page-desc %}
-{% if duration %}
-    В период с {{ duration.start }} по {{ duration.end }}
-{% else %}
-    За весь период
-{% endif %}
+    {% if not user.is_superuser %}
+        Статистика доступна только администраторам
+    {% else %}
+        {% if duration %}
+            В период с {{ duration.start }} по {{ duration.end }}
+        {% else %}
+            За весь период
+        {% endif %}
+    {% endif %}
 {% endblock %}
 
 {% block back-url %}
@@ -21,6 +25,7 @@
 {% endblock %}
 
 {% block content %}
+{% if user.is_superuser %}
 <div class="container">
     <div style="margin-top:2px" class="p-5 text-center">
         <h1 class="mb-3">Статистика добавленных слов</h1>
@@ -50,9 +55,9 @@
     <div class="row p-5 text-center">
         <a align="center" class="btn btn-primary" href="/list-lessons" role="button" target="_blank">Посмотреть список уроков</a>
     </div>
-    <form style="background-color:#e9effd;" method="post" class="px-5 py-2">
+    <form method="post" class="px-5 py-2 bcgrd-light-blue">
         <div class="row mb-4 text-center">
-            <h3 style="color:#1a0f91">Фильтр по датам</h3>
+            <h3 class="clr-blue">Фильтр по датам</h3>
         </div>
         <div class="row mb-4">
             <div class="col">
@@ -76,4 +81,5 @@
         </div>
     </form>
 </div>
+{% endif %}
 {% endblock %}
