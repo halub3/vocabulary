@@ -3,8 +3,8 @@ import json
 from django.shortcuts import render, redirect
 from django.core.cache import cache
 from django.http import HttpResponse
-from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from . import words
 from . import lessons
 from .forms import RegisterForm
