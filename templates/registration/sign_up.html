@@ -1,0 +1,22 @@
+{% extends "base_page.html" %}
+{% block page-title %}
+Sign-up
+{% endblock %}
+
+{% block back-url %}
+/
+{% endblock %}
+
+{% block back-title %}
+Назад
+{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<form method="post">
+  {% csrf_token %}{{form|crispy}}
+  <p>Уже есть аккаунт? Войдите <a href="/login">по ссылке</a>!</p>
+  <button type="submit" class="btn btn-success">Создать аккаунт</button>
+</form>
+
+{% endblock %}
