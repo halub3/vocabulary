@@ -1,23 +1,27 @@
 {% load static %}
-<header style="background-color:#e9effd" class="p-3">
+<header class="p-3 bcgrd-light-blue">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <img src="{% static 'logo.png' %}" alt="Проект про математику" height="60"/>
+          <img src="{% static 'logo.png' %}" alt="Проект для изучения слов" height="60"/>
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/" style="color:#1a0f91" class="nav-link px-2">Главная</a></li>
-          <li><a href="/list-lessons" style="color:#1a0f91" class="nav-link px-2">Уроки</a></li>
-          <li><a href="/list-words" style="color:#1a0f91" class="nav-link px-2">Словарь</a></li>
-          <li><a href="/studying" style="color:#1a0f91" class="nav-link px-2">Учиться</a></li>
-          <li><a href="/stats" style="color:#1a0f91" class="nav-link px-2">Статистика</a></li>
+          <li><a href="/" class="nav-link px-2 clr-blue">Главная</a></li>
+          <li><a href="/list-lessons" class="nav-link px-2 clr-blue">Уроки</a></li>
+          <li><a href="/list-words" class="nav-link px-2 clr-blue">Словарь</a></li>
+          <li><a href="/studying" class="nav-link px-2 clr-blue">Учиться</a></li>
+          <li><a href="/stats" class="nav-link px-2 clr-blue">Статистика</a></li>
         </ul>
 
-        <div class="text-end">
-          <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-            <img src="{% static 'logo.png' %}" alt="Проект про математику" height="60"/>
-          </a>
+        <div class="col-md-3 text-end">
+          {% if user.is_authenticated %}
+            <span class="navbar-text">Вошли как <b><u>{{user.username}}</u></b> | {% if user.is_superuser %}(Admin){% endif %}</span>
+            <button type="button" class="btn btn-outline-primary me-2" onclick="document.location='/logout'">Выйти</button>
+          {% else %}
+            <button type="button" class="btn btn-outline-primary me-2" onclick="document.location='/login'">Войти</button>
+            <button type="button" class="btn btn-primary" onclick="document.location='/sign-up'">Регистрация</button>
+          {% endif %}
         </div>
       </div>
     </div>
